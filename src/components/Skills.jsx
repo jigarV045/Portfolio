@@ -46,13 +46,13 @@ const skillGroups = [
   },
 ];
 
-const colorMap: Record<string, string> = {
+const colorMap = {
   cyan: 'border-cyan-500/30 bg-cyan-500/5 text-cyan-400',
   blue: 'border-blue-500/30 bg-blue-500/5 text-blue-400',
   violet: 'border-violet-500/30 bg-violet-500/5 text-violet-400',
 };
 
-const headerColorMap: Record<string, string> = {
+const headerColorMap = {
   cyan: 'from-cyan-400 to-cyan-600',
   blue: 'from-blue-400 to-blue-600',
   violet: 'from-violet-400 to-violet-600',

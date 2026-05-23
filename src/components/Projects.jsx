@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FiGithub, FiExternalLink, FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+import { FiGithub, FiExternalLink } from 'react-icons/fi';
+
 
 const projects = [
   {
@@ -19,8 +20,8 @@ const projects = [
       'Responsive UI',
     ],
     tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Gemini API', 'Tailwind CSS'],
-    github: 'https://github.com/jigarV045',
-    live: '#',
+    github: 'https://github.com/jigarV045/Interview-A-Project',
+    live: 'https://interview-ai-jv.vercel.app',
     accent: 'cyan',
   },
   {
@@ -38,7 +39,7 @@ const projects = [
       'Secure JWT authentication',
     ],
     tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS', 'Socket.IO'],
-    github: 'https://github.com/jigarV045',
+    github: 'https://github.com/jigarV045/Intrafix',
     live: '#',
     accent: 'blue',
   },
@@ -57,13 +58,13 @@ const projects = [
       'Structured conversational flows',
     ],
     tech: ['Botpress Studio', 'AI Integrations', 'Web Technologies', 'Conversational Workflow Design'],
-    github: 'https://github.com/jigarV045',
-    live: '#',
+    github: 'https://github.com/jigarV045/TechAdopt-Chatbot',
+    live: 'https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https://files.bpcontent.cloud/2026/03/23/15/20260323151334-I3SVQ74E.json', 
     accent: 'violet',
   },
 ];
 
-const accentMap: Record<string, { border: string; glow: string; badge: string; btn: string; dot: string }> = {
+const accentMap = {
   cyan: {
     border: 'hover:border-cyan-500/40',
     glow: 'group-hover:shadow-cyan-500/10',
@@ -87,8 +88,7 @@ const accentMap: Record<string, { border: string; glow: string; badge: string; b
   },
 };
 
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
-  const [expanded, setExpanded] = useState(false);
+function ProjectCard({ project, index }) {
   const acc = accentMap[project.accent];
 
   return (
@@ -97,80 +97,57 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className={`group relative rounded-2xl bg-white/[0.02] border border-white/8 ${acc.border} overflow-hidden transition-all duration-500 hover:shadow-2xl ${acc.glow}`}
+      className="flex flex-col"
     >
-      {/* Image */}
-      <div className="relative h-52 overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/50 to-transparent" />
-        <div className="absolute bottom-4 left-5 right-5 flex items-end justify-between">
-          <h3 className="text-xl font-bold text-white">{project.title}</h3>
-          <div className="flex gap-2">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`p-2 rounded-lg border ${acc.btn} transition-all duration-200`}
-              onClick={e => e.stopPropagation()}
-            >
-              <FiGithub size={15} />
-            </a>
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`p-2 rounded-lg border ${acc.btn} transition-all duration-200`}
-              onClick={e => e.stopPropagation()}
-            >
-              <FiExternalLink size={15} />
-            </a>
+      <div
+        className={`group flex flex-col rounded-2xl bg-white/[0.02] border border-white/8 ${acc.border} overflow-hidden transition-all duration-500 hover:shadow-2xl ${acc.glow}`}
+      >
+        {/* Image wrapper */}
+        <div className="relative h-52 overflow-hidden flex-shrink-0">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/50 to-transparent" />
+          <div className="absolute bottom-4 left-5 right-5 flex items-end justify-between">
+            <h3 className="text-xl font-bold text-white">{project.title}</h3>
+            <div className="flex gap-2">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`p-2 rounded-lg border ${acc.btn} transition-all duration-200`}
+                onClick={e => e.stopPropagation()}
+              >
+                <FiGithub size={15} />
+              </a>
+
+              {/* Conditional Live Link or Chat Bot Opener */}
+              <a
+                href={project.live}
+                target="_blank"
+                // rel="noopener noreferrer"
+                className={`p-2 rounded-lg border ${acc.btn} transition-all duration-200 opacity-40 pointer-events-none ${project.live !== '#' ? 'opacity-100 pointer-events-auto' : ''} `}
+              >
+                <FiExternalLink size={15} />
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Body */}
-      <div className="p-6">
-        <p className="text-sm text-slate-400 leading-relaxed mb-4">{project.description}</p>
+        {/* Body content */}
+        <div className="p-6 flex flex-col flex-1">
+          <p className="text-sm text-slate-400 leading-relaxed mb-4">{project.description}</p>
 
-        {/* Tech badges */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.tech.map(t => (
-            <span key={t} className={`px-2.5 py-1 text-[11px] font-medium rounded-md border ${acc.badge}`}>
-              {t}
-            </span>
-          ))}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.tech.map(t => (
+              <span key={t} className={`px-2.5 py-1 text-[11px] font-medium rounded-md border ${acc.badge}`}>
+                {t}
+              </span>
+            ))}
+          </div>
         </div>
-
-        {/* Features toggle */}
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-slate-300 transition-colors"
-        >
-          {expanded ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />}
-          {expanded ? 'Hide features' : 'Show features'}
-        </button>
-
-        <AnimatePresence>
-          {expanded && (
-            <motion.ul
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="mt-3 space-y-1.5 overflow-hidden"
-            >
-              {project.features.map(f => (
-                <li key={f} className="flex items-center gap-2 text-xs text-slate-400">
-                  <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${acc.dot}`} />
-                  {f}
-                </li>
-              ))}
-            </motion.ul>
-          )}
-        </AnimatePresence>
       </div>
     </motion.div>
   );
@@ -201,7 +178,7 @@ export default function Projects() {
           <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full mx-auto" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
           {projects.map((project, i) => (
             <ProjectCard key={project.title} project={project} index={i} />
           ))}

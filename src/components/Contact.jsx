@@ -22,9 +22,9 @@ const itemVariants = {
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
-  const [focused, setFocused] = useState<string | null>(null);
+  const [focused, setFocused] = useState(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
     setTimeout(() => {
@@ -108,7 +108,7 @@ export default function Contact() {
                     <label className="block text-xs font-medium text-slate-400 mb-2">{field.label}</label>
                     <input
                       type={field.type}
-                      value={form[field.id as keyof typeof form]}
+                      value={form[field.id]}
                       onChange={e => setForm(prev => ({ ...prev, [field.id]: e.target.value }))}
                       onFocus={() => setFocused(field.id)}
                       onBlur={() => setFocused(null)}

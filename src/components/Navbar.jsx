@@ -41,7 +41,7 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
-  const handleNav = (href: string) => {
+  const handleNav = (href) => {
     setMenuOpen(false);
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 export function useScrollReveal(threshold = 0.15) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef(null);
 
   useEffect(() => {
     const el = ref.current;

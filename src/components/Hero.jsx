@@ -6,11 +6,11 @@ import { FiGithub, FiLinkedin, FiMail, FiArrowDown } from 'react-icons/fi';
 const roles = ['MERN Stack Developer', 'Full-Stack Engineer', 'React.js Developer', 'Node.js Developer'];
 
 export default function Hero() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const nameRef = useRef<HTMLHeadingElement>(null);
-  const orb1Ref = useRef<HTMLDivElement>(null);
-  const orb2Ref = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef(null);
+  const nameRef = useRef(null);
+  const orb1Ref = useRef(null);
+  const orb2Ref = useRef(null);
+  const gridRef = useRef(null);
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -18,7 +18,7 @@ export default function Hero() {
   // Typing animation
   useEffect(() => {
     const current = roles[roleIndex];
-    let timeout: ReturnType<typeof setTimeout>;
+    let timeout;
 
     if (!isDeleting) {
       if (displayText.length < current.length) {
