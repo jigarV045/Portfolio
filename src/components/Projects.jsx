@@ -59,7 +59,7 @@ const projects = [
     ],
     tech: ['Botpress Studio', 'AI Integrations', 'Web Technologies', 'Conversational Workflow Design'],
     github: 'https://github.com/jigarV045/TechAdopt-Chatbot',
-    live: 'https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https://files.bpcontent.cloud/2026/03/23/15/20260323151334-I3SVQ74E.json', 
+    live: 'https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https://files.bpcontent.cloud/2026/03/23/15/20260323151334-I3SVQ74E.json',
     accent: 'violet',
   },
 ];
@@ -108,6 +108,7 @@ function ProjectCard({ project, index }) {
             src={project.image}
             alt={project.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/50 to-transparent" />
           <div className="absolute bottom-4 left-5 right-5 flex items-end justify-between">
@@ -128,7 +129,8 @@ function ProjectCard({ project, index }) {
                 href={project.live}
                 target="_blank"
                 // rel="noopener noreferrer"
-                className={`p-2 rounded-lg border ${acc.btn} transition-all duration-200 opacity-40 pointer-events-none ${project.live !== '#' ? 'opacity-100 pointer-events-auto' : ''} `}
+                className={`p-2 rounded-lg border ${acc.btn} transition-all duration-200
+  ${project.live === '#' ? 'opacity-30 pointer-events-none cursor-not-allowed' : ''}`}
               >
                 <FiExternalLink size={15} />
               </a>

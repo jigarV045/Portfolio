@@ -94,7 +94,7 @@ export default function Hero() {
       {/* Animated grid */}
       <div
         ref={gridRef}
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage: `linear-gradient(rgba(6,182,212,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,0.5) 1px, transparent 1px)`,
           backgroundSize: '60px 60px',
@@ -104,16 +104,16 @@ export default function Hero() {
       {/* Glowing orbs */}
       <div
         ref={orb1Ref}
-        className="absolute top-1/4 right-1/4 w-72 h-72 rounded-full blur-3xl opacity-20"
+        className="absolute top-1/4 right-1/4 w-72 h-72 rounded-full blur-3xl opacity-30"
         style={{ background: 'radial-gradient(circle, #06b6d4, transparent 70%)' }}
       />
       <div
         ref={orb2Ref}
-        className="absolute bottom-1/3 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-15"
+        className="absolute bottom-1/3 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-25"
         style={{ background: 'radial-gradient(circle, #3b82f6, transparent 70%)' }}
       />
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl opacity-5"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl opacity-10"
         style={{ background: 'radial-gradient(circle, #a855f7, transparent 70%)' }}
       />
 

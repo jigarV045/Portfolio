@@ -92,14 +92,15 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-3">
-            <button
+            {/* <button
               onClick={toggleTheme}
               className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200"
             >
               {isDark ? <HiSun size={18} /> : <HiMoon size={18} />}
-            </button>
+            </button> */}
             <a
-              href="#"
+              href="https://drive.google.com/file/d/1x89dGedE5aRuYCqqRKkS9NsWSm_s2rQ6/view?usp=drive_link"
+              target="_blank"
               className="px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105"
             >
               Resume

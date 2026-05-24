@@ -11,11 +11,13 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import useBotpress from './hooks/useBotpress';
+import CursorGlow from './components/CursorGlow';
 
 export default function App() {
   useBotpress();
   return (
     <ThemeProvider>
+      <CursorGlow />
       <LoadingScreen />
       <ScrollProgress />
       <div className="min-h-screen bg-[#0F172A] text-white overflow-x-hidden">
